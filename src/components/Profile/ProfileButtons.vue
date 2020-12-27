@@ -7,7 +7,7 @@
             Изменить профиль
         </a>
         
-        <a @click.prevent="btnClick" class="gift">
+        <a @click.prevent="btnClick('gift')" class="gift">
             <img v-bind:src="require(`@/img/accountImgs/changeProfileGift.svg`)" alt="gift">
             <div class="giftNotification">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
             <img v-bind:src="require(`@/img/accountImgs/changeProfileWallet.svg`)" alt="wallet">
         </a>
 
-        <div class="share">
+        <div class="share" @click="btnClick('share')">
             <img v-bind:src="require(`@/img/accountImgs/changeProfileShare.svg`)" alt="share">
         </div>
     </div>
@@ -34,11 +34,18 @@ export default {
     methods: {
         ...mapActions([
             'SHOW_MODAL_GIFT', 
-            'HIDE_MODAL_GIFT'
+            'HIDE_MODAL_GIFT',
+            'SHOW_MODAL_SHARE', 
+            'HIDE_MODAL_SHARE',
         ]),
-        async btnClick() {
-            await this.SHOW_MODAL_GIFT();
-            await ModalHide('.modalGift', this.HIDE_MODAL_GIFT);
+        async btnClick(type) {
+            if (type === 'gift') {
+                await this.SHOW_MODAL_GIFT();
+                await ModalHide('.modalGift', this.HIDE_MODAL_GIFT);
+            } else if (type === 'share') {
+                await this.SHOW_MODAL_SHARE();
+                await ModalHide('.modalShare', this.HIDE_MODAL_SHARE);
+            }
         }
     }
 }

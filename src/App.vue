@@ -25,7 +25,7 @@ h1,h2,h3{
 p{font-family: 'Gilroy';}
 a{color: inherit;text-decoration: none;}
 .pageContent{
-    height: calc(100vh - 102px);
+    height: calc(100% - 102px);
     width: 100%;
     position: fixed;
     top: 51px;

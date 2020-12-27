@@ -1,7 +1,8 @@
 let startY = null,
     startX = null;
 const ModalHide = (modalWrapp, action) => {
-    let modal = document.querySelector(modalWrapp);
+    let modal = document.querySelector(modalWrapp),
+        modalContent = modal.querySelector('.modalContent');
 
     const modalHide = (eStart, type = 'click', end = false) => {
         if (end) {
@@ -15,14 +16,19 @@ const ModalHide = (modalWrapp, action) => {
 
             const hide = (eType, event1) => {
                 if (eType === 'click') {
-                    console.log('test');
-                    action();
+                    modalContent.style.transform = "translateY(125%)";
+                    setTimeout(() => {
+                        action();
+                    }, 50);
                 } else if (eType === 'move') {
                     if ((event1.changedTouches[0].pageX) > (startX + 75) || (event1.changedTouches[0].pageX) < (startX - 75)) {
                         return;
                     }
                     if ((event1.changedTouches[0].pageY) > (startY + 125)) {
-                        action();
+                        modalContent.style.transform = "translateY(125%)";
+                        setTimeout(() => {
+                            action();
+                        }, 50);
                         modal.removeEventListener('touchmove', (e) => hide('move', e));
                         return;
                     }

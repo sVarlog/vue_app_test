@@ -18,7 +18,7 @@
             </ul>
         </div>
         <BottomMenu active="profile"/>
-        <ModalShare />
+        <ModalShare v-if="allModals.modalShare.status"/>
         <ModalSettings v-if="allModals.modalSetting.status"/>
         <ModalGift v-if="allModals.modalGift.status"/>
     </div>

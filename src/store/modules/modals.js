@@ -3,6 +3,9 @@ export default {
         modalSetting: {
             status: false
         },
+        modalShare: {
+            status: false
+        },
         modalGift: {
             status: false
         },
@@ -16,6 +19,12 @@ export default {
         },
         HIDE_MODAL_SETTINGS({commit}) {
             commit('HIDE_MODAL_SETTINGS');
+        },
+        SHOW_MODAL_SHARE({ commit }) {
+            commit('SHOW_MODAL_SHARE');
+        },
+        HIDE_MODAL_SHARE({ commit }) {
+            commit('HIDE_MODAL_SHARE');
         },
         SHOW_MODAL_GIFT({commit}) {
             commit('SHOW_MODAL_GIFT');
@@ -36,6 +45,12 @@ export default {
         },
         HIDE_MODAL_SETTINGS: (state) => {
             state.modalSetting.status = false;
+        },
+        SHOW_MODAL_SHARE: (state) => {
+            state.modalShare.status = true;
+        },
+        HIDE_MODAL_SHARE: (state) => {
+            state.modalShare.status = false;
         },
         SHOW_MODAL_GIFT: (state) => {
             state.modalGift.status = true;
