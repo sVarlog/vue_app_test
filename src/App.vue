@@ -40,7 +40,7 @@ a{color: inherit;text-decoration: none;}
     bottom: 0;
     left: 0;
     transition: .15s;
-    opacity: 0;
+    opacity: 1;
     z-index: -1;
     overflow: hidden;
 }
@@ -77,12 +77,8 @@ a{color: inherit;text-decoration: none;}
     transform: translateY(125%);
     z-index: 2;
 }
-.modal .contentModal {
-    z-index: 2;
-}
 .modal.active .modalContent{
     transition: .25s;
-    transition-delay: .5s;
     transform: translateY(0);
 }
 .modal .modalContent .line {

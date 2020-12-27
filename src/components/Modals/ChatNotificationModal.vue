@@ -1,6 +1,6 @@
 <template>
-    <transition name="fade">
-        <div class="modal notificationModal active">
+    <transition name="modal-fade">
+        <div v-bind:class="['modal', 'notificationModal', status ? 'active' : '']">
             <div class="modalWrapp"></div>
             <div class="modalContent">
                 <div class="row">
@@ -95,8 +95,16 @@
 import stepsInit from '@/js/ChatNotification.js';
 export default {
     name: 'ChatNotificationModal',
+    data() {
+        return {
+            status: false
+        }
+    },
     mounted() {
         stepsInit();
+        setTimeout(() => {
+            this.status = true
+        }, 0);
     },
 }
 </script>
@@ -216,10 +224,12 @@ export default {
 .modal .modalContent button:disabled{
     opacity: .3;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.modal-fade-enter,
+.modal-fade-leave-active {
+    opacity: 0;
 }
-.fade-enter, .fade-leave-to{
-  opacity: 0;
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .5s ease
 }
 </style>

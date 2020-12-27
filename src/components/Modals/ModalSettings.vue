@@ -1,8 +1,8 @@
 <template>
-    <transition name="fade">
-        <div class="modal modalSetting active">
-            <div class="modalWrapp"></div>
-            <transition name="fade">
+    <keep-alive>
+        <transition name="modal-fade">
+            <div v-bind:class="['modal', 'modalSetting', state ? 'active' : 'false']">
+                <div class="modalWrapp"></div>
                 <div class="modalContent">
                     <div class="line"></div>
                     <div class="mainMenu">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="anotherMenu">
                         <p>FRIENDSONLY В СОЦСЕТЯХ</p>
-                        <a href="#" class="menuItem">
+                        <a href="http://t.me/friendsonly_me" target="_blank" class="menuItem">
                             <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="39" height="39" rx="19.5" fill="#F3F4F4"/>
                                 <path d="M17.2269 22.8789L25.0094 28.7548C25.8975 29.2556 26.5384 28.9962 26.7596 27.9123L29.9275 12.6566C30.2518 11.3278 29.4319 10.7249 28.5822 11.1191L9.98043 18.4492C8.7107 18.9697 8.71827 19.6936 9.74902 20.0161L14.5226 21.5389L25.5741 14.4137C26.0958 14.0903 26.5747 14.264 26.1817 14.6206" fill="url(#paint0_linear)"/>
@@ -57,14 +57,27 @@
                         <span>2020. Looplab Ltd</span>
                     </div>
                 </div>
-            </transition>
-        </div>
-    </transition>
+            </div>
+        </transition>
+    </keep-alive>
 </template>
 
 <script>
 export default {
     name: 'ModalSettings',
+    data() {
+        return {
+            state: false
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.state = true
+        }, 0);
+    },
+    beforeDestroy() {
+        this.state = false
+    },
 }
 </script>
 
@@ -143,10 +156,12 @@ export default {
     line-height: 17px;
     font-weight: 500;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.modal-fade-enter,
+.modal-fade-leave-active {
+    opacity: 0;
 }
-.fade-enter, .fade-leave-to{
-  opacity: 0;
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .5s ease
 }
 </style>

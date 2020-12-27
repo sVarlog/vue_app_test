@@ -14,8 +14,9 @@
                 <DialogItem v-for="(message) of getMessages.dialogs.with" v-bind:key="message.id" v-bind:message="message"/>
             </div>
 
-            <ChatNotificationModal v-if="allModals.chatsNotification.status"/>
        </div>
+       
+        <ChatNotificationModal v-if="allModals.chatsNotification.status"/>
 
         <BottomMenu active="chats"/>
     </div>

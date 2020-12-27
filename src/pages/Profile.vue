@@ -16,11 +16,11 @@
                     v-bind:post="post"
                 />
             </ul>
-            <ModalShare />
-            <ModalSettings v-if="allModals.modalSetting.status"/>
-            <ModalGift v-if="allModals.modalGift.status"/>
         </div>
         <BottomMenu active="profile"/>
+        <ModalShare />
+        <ModalSettings v-if="allModals.modalSetting.status"/>
+        <ModalGift v-if="allModals.modalGift.status"/>
     </div>
 </template>
 

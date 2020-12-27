@@ -1,6 +1,6 @@
 <template>
-    <transition name="fade">
-        <div v-bind:class="['modal', 'modalGift', allModals.modalGift.status ? 'active' : '' ]">
+    <transition name="modal-fade">
+        <div v-bind:class="['modal', 'modalGift', status ? 'active' : '' ]">
             <div class="modalWrapp"></div>
             <div class="modalContent">
                 <div class="line"></div>
@@ -71,16 +71,10 @@ export default {
         }
     },
     mounted() {
-        console.log(this);
         this.initScripts();
-    },
-    update() {
-        console.log('update');
-    },
-    watch: {
-        allModals: function () {
-            console.log('test');
-        }
+        setTimeout(() => {
+            this.status = true;
+        }, 0);
     }
 }
 </script>
@@ -239,10 +233,12 @@ export default {
 .modalGift .modalContent .itemForm.active.confirm .textAfter{
     display: block;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.modal-fade-enter,
+.modal-fade-leave-active {
+    opacity: 0;
 }
-.fade-enter, .fade-leave-to{
-  opacity: 0;
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .5s ease
 }
 </style>
