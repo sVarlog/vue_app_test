@@ -51,8 +51,8 @@
 
 <style scoped>
 .Wrapp{
-    height: 100vh;
-    max-height: 100vh;
+    height: 100%;
+    max-height: 100%;
 }
 .page-account__poster {
     height: 197px;
