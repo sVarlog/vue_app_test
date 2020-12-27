@@ -11,8 +11,6 @@ body{
 	min-height: 100vh;
 	overflow-x: hidden;
 	margin: auto;
-	padding-top: 51px;
-	padding-bottom: 51px;
 }
 body.modalActive{
 	height: 100vh;
@@ -26,6 +24,14 @@ h1,h2,h3{
 }
 p{font-family: 'Gilroy';}
 a{color: inherit;text-decoration: none;}
+.pageContent{
+    height: calc(100vh - 102px);
+    width: 100%;
+    position: fixed;
+    top: 51px;
+    bottom: 51px;
+    overflow-y: scroll;
+}
 /* modals */
 .modal{
     position: fixed;

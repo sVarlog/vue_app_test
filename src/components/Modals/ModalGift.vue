@@ -72,20 +72,7 @@ export default {
     },
     mounted() {
         console.log(this);
-        this.initScripts()
-        document.onreadystatechange = () => {
-            if (this.allModals.modalGift.status){
-                console.log(this.allModals);
-
-            }
-            // if (document.readyState == "complete") {
-            //     console.log('test');
-            //     setTimeout(() => {
-            //         customSlider('.modalGift .customSlider', '.sliderWrapp', '.sliderInner', '.item', false, 0, 100);
-            //         giftForm(this.getGifts);
-            //     }, 1000);
-            // }
-        }
+        this.initScripts();
     },
     update() {
         console.log('update');
@@ -111,6 +98,8 @@ export default {
     line-height: 15px;
     color: #469BFC;
     display: flex;
+    width: 80px;
+    white-space: nowrap;
 }
 .modalGift .modalContent .sliderWrapp{
     width: 275px;

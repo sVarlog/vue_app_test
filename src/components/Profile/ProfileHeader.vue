@@ -39,13 +39,6 @@ export default {
 </script>
 
 <style scoped>
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #FAFAFA;
-    border-bottom: 1px solid #ececec;
-}
 .header a.back{
     color: #fff;
     display: flex;
@@ -66,11 +59,17 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 4;
     width: 100%;
     height: 51px;
+    background: #FAFAFA;
+    z-index: 4;
+    border-bottom: 1px solid #ececec;
     padding-left: 12px;
     padding-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .header a.back{
     color: #4892F3;

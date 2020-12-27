@@ -1,12 +1,12 @@
 <template>
-    <div class="imgWrapp">
-        <div class="background">
-            <div class="blur"></div>
-            <img v-bind:src="require(`@/img/messageBg.jpg`)">
-        </div>
+    <div class="openChat">
         <CustomHeader v-bind:title="filterPersonData().name" pageType="message" v-bind:status="filterPersonData().status"/>
         
-        <div class="messageWrapp">
+        <div class="pageContent">
+            <div class="background">
+                <div class="blur"></div>
+                <img v-bind:src="require(`@/img/messageBg.jpg`)">
+            </div>
             <div class="messageInner">
                 <div class="date">вторник</div>
                 <div class="message to">
@@ -125,6 +125,7 @@
                 </button>
             </div>
         </div>
+
         <div class="bottomSendForm">
             <button class="attachment">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,16 +165,13 @@ export default {
 </script>
 
 <style scoped>
-.imgWrapp{
-    position: relative;
-}
-.imgWrapp .background{
-    position: absolute;
+.background{
+    position: fixed;
     z-index: -1;
     width: 100%;
     height: 100%;
 }
-.imgWrapp .background .blur{
+.background .blur{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -181,20 +179,13 @@ export default {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
-.imgWrapp .background img{
+.background img{
     position: relative;
     z-index: 1;
     width: 100%;
     height: 100%;
 }
-.messageWrapp{
-    position: relative;
-    z-index: 2;
-    height: calc(100vh - 102px);
-    display: flex;
-    overflow: scroll;
-}
-.messageWrapp .messageInner{
+.messageInner{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -204,7 +195,7 @@ export default {
     padding-bottom: 15px;
     margin-top: auto;
 }
-.messageWrapp .date{
+.date{
     background: rgba(0, 0, 0, 0.2);
     border-radius: 35px;
     padding-left: 11px;
@@ -221,7 +212,7 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.messageWrapp .message{
+.message{
     border-radius: 15px;
     font-family: Gilroy;
     font-style: normal;
@@ -241,13 +232,13 @@ export default {
     align-items: flex-end;
     position: relative;
 }
-.messageWrapp .message.to{
+.message.to{
     align-self: flex-end;
     border-bottom-right-radius: 0;
     background: #E7FECB;
     padding-bottom: 6px;
 }
-.messageWrapp .message.to .time{
+.message.to .time{
     margin-left: 5px;
     font-family: Gilroy;
     font-style: normal;
@@ -258,18 +249,18 @@ export default {
     color: #19A839;
     margin-bottom: -3px;
 }
-.messageWrapp .message.to .status{
+.message.to .status{
     display: flex;
     align-items: flex-end;
     margin-left: 3px;
     margin-bottom: -3px;
 }
-.messageWrapp .message.from{
+.message.from{
     align-self: flex-start;
     border-bottom-left-radius: 0;
     background: #FFFFFF;
 }
-.messageWrapp .message.from .time{
+.message.from .time{
     font-family: Gilroy;
     font-style: normal;
     font-weight: 500;
@@ -280,32 +271,32 @@ export default {
     margin-left: 12px;
     margin-bottom: -3px;
 }
-.messageWrapp .message.from.twoRows .time{
+.message.from.twoRows .time{
     position: absolute;
     right: 12px;
     bottom: 5px;
 }
-.messageWrapp .message.from.invoice{
+.message.from.invoice{
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 255px;
 }
-.messageWrapp .message.from.invoice svg{
+.message.from.invoice svg{
     width: 58px;
     min-width: 58px;
     height: 58px;
     min-height: 58px;
 }
-.messageWrapp .message.from.invoice .text{
+.message.from.invoice .text{
     margin-left: 10px;
 }
-.messageWrapp .message.invoiceWBtn{
+.message.invoiceWBtn{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.messageWrapp .message.invoiceBtn{
+.message.invoiceBtn{
     width: 100%;
     border-radius: 10px;
     border-top-left-radius: 5px;

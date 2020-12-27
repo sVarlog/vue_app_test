@@ -1,24 +1,26 @@
 <template>
-    <div>
+    <div class="Wrapp">
         <ProfileHeader 
             v-bind:title="getProfileHeader.header"
             v-bind:status="getProfileHeader.status"
         />
-        <div class="page-account__poster">
-            <img ref="poster" v-bind:src="require(`@/img/${getProfileBanner.img}`)" alt="">
+        <div class="pageContent">
+            <div class="page-account__poster">
+                <img ref="poster" v-bind:src="require(`@/img/${getProfileBanner.img}`)" alt="">
+            </div>
+            <ProfileDescription />
+            <ul>
+                <ProfilePost 
+                    v-for="post of allPosts"
+                    v-bind:key="post.id"
+                    v-bind:post="post"
+                />
+            </ul>
+            <ModalShare />
+            <ModalSettings v-if="allModals.modalSetting.status"/>
+            <ModalGift v-if="allModals.modalGift.status"/>
         </div>
-        <ProfileDescription />
-        <ul>
-            <ProfilePost 
-                v-for="post of allPosts"
-                v-bind:key="post.id"
-                v-bind:post="post"
-            />
-        </ul>
         <BottomMenu active="profile"/>
-        <ModalShare />
-        <ModalSettings v-if="allModals.modalSetting.status"/>
-        <ModalGift v-if="allModals.modalGift.status"/>
     </div>
 </template>
 
@@ -48,6 +50,10 @@
 </script>
 
 <style scoped>
+.Wrapp{
+    height: 100vh;
+    max-height: 100vh;
+}
 .page-account__poster {
     height: 197px;
     position: relative;
