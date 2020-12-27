@@ -4,25 +4,26 @@
             v-bind:char="char"
         />
         <div class="page-account__nik">
-            {{name}}
+            {{getProfileDescr.name}}
         </div>
         <div class="page-account__info">
-            <span>{{publish}} Публикаций</span>
+            <span>{{getProfileDescr.publish}} Публикаций</span>
             <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="3" height="3" rx="1.5" fill="#BDBDBD"/>
             </svg>
-            <span>{{friends}} Друзей</span>
+            <span>{{getProfileDescr.friends}} Друзей</span>
         </div>
         <div class="page-account__price">
-            {{descr}}
+            {{getProfileDescr.descr}}
         </div>
         <ProfileButtons />
     </div>
 </template>
 
 <script>
-import ProfileAvatar from '@/components/ProfileAvatar';
-import ProfileButtons from '@/components/ProfileButtons';
+import {mapGetters} from 'vuex';
+import ProfileAvatar from '@/components/Profile/ProfileAvatar';
+import ProfileButtons from '@/components/Profile/ProfileButtons';
 export default {
     name: 'ProfileDescription',
     data() {
@@ -30,7 +31,7 @@ export default {
             char: 'K'
         }
     },
-    props: ['descr', 'name', 'publish', 'friends'],
+    computed: mapGetters(['getProfileDescr']),
     components: {
         ProfileAvatar,
         ProfileButtons

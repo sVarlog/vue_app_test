@@ -1,64 +1,49 @@
 <template>
     <div>
         <ProfileHeader 
-            v-bind:title="profileHeader.header"
-            v-bind:status="profileHeader.status"
+            v-bind:title="getProfileHeader.header"
+            v-bind:status="getProfileHeader.status"
         />
         <div class="page-account__poster">
-            <img ref="poster" src="../img/accountImgs/AccountBackground.jpg" alt="">
+            <img ref="poster" v-bind:src="require(`@/img/${getProfileBanner.img}`)" alt="">
         </div>
-        <ProfileDescription 
-            v-bind:descr="profileDescr.descr"
-            v-bind:name="profileDescr.name"
-            v-bind:publish="profileDescr.publish"
-            v-bind:friends="profileDescr.friends"
-        />
+        <ProfileDescription />
         <ul>
             <ProfilePost 
-                v-for="post of ProfilePosts"
+                v-for="post of allPosts"
                 v-bind:key="post.id"
                 v-bind:post="post"
             />
         </ul>
-        <BottomMenu />
+        <BottomMenu active="profile"/>
+        <ModalShare />
+        <ModalSettings v-if="allModals.modalSetting.status"/>
+        <ModalGift v-if="allModals.modalGift.status"/>
     </div>
 </template>
 
 <script>
-    import ProfileHeader from '@/components/ProfileHeader';
-    import ProfileDescription from '@/components/ProfileDescription';
-    import ProfilePost from '@/components/ProfilePost';
+    import {mapGetters} from 'vuex';
+    import ProfileHeader from '@/components/Profile/ProfileHeader';
+    import ProfileDescription from '@/components/Profile/ProfileDescription';
+    import ProfilePost from '@/components/Profile/ProfilePost';
     import BottomMenu from '@/components/BottomMenu';
+    import ModalShare from '@/components/Modals/ModalShare';
+    import ModalSettings from '@/components/Modals/ModalSettings';
+    import ModalGift from '@/components/Modals/ModalGift';
+
     export default {
         name: 'Profile',
         components: {
             ProfileHeader,
             ProfileDescription,
             ProfilePost,
-            BottomMenu
+            BottomMenu,
+            ModalShare,
+            ModalSettings,
+            ModalGift
         },
-        data() {
-            return {
-                profileHeader: {
-                    header: '@mayer_kira',
-                    status: 'В сети',
-                },
-                profileDescr: {
-                    name: 'Кира Майер',
-                    publish: '9',
-                    friends: '3K',
-                    descr: 'Здесь я буду публиковать все то, что вы не увидите в Инстаграм Здесь я буду публиковать все то, что вы не увидите в Инстаграм. ЭТО ТЕСТОВОЕ ОПИСАНИЕ, ОНО ВЫВОДИТСЯ В ЗАВИСИМОСТИ ОТ ВХОДЯЩЕГО КОНТЕНТА'
-                },
-                ProfilePosts: [
-                    {id: 0, img: 'accountImgs/accountImg3.jpg', descr: '', views: '14223'},
-                    {id: 1, img: 'accountImgs/accountImg1.jpg', tag: {name: 'paid', text: '500₽', icon: "🔒"}, descr: 'The Engineering', views: '35'},
-                    {id: 2, img: 'accountImgs/accountImg2.jpg', descr: 'The Engineering of Ghost И что опя...', views: '14223'},
-                    {id: 3, img: 'accountImgs/accountImg3.jpg', descr: 'Test description', views: '1422322'},
-                    {id: 4, img: 'accountImgs/accountImg1.jpg', tag: {name: 'friends', text: 'Для друзей', icon: "👋"}, descr: 'Another test descr', views: '13235'},
-                    {id: 5, img: 'accountImgs/accountImg2.jpg', tag: {name: 'friends', text: 'Для друзей', icon: "👋"}, descr: 'The Engineering of Ghost И что опя...', views: '14223'},
-                ]
-            }
-        }
+        computed: mapGetters(['allPosts', 'getProfileHeader', 'getProfileBanner', 'allModals'])
     }
 </script>
 

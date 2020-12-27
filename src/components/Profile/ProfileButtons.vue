@@ -7,8 +7,8 @@
             Изменить профиль
         </a>
         
-        <a href="#" class="gift">
-            <img src="../img/accountImgs/changeProfileGift.svg" alt="gift">
+        <a @click.prevent="btnClick" class="gift">
+            <img v-bind:src="require(`@/img/accountImgs/changeProfileGift.svg`)" alt="gift">
             <div class="giftNotification">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="12" height="12" rx="6" fill="#EA4E3D"/>
@@ -17,18 +17,30 @@
         </a>
 
         <a href="moneyPage.html" class="wallet">
-            <img src="../img/accountImgs/changeProfileWallet.svg" alt="wallet">
+            <img v-bind:src="require(`@/img/accountImgs/changeProfileWallet.svg`)" alt="wallet">
         </a>
 
         <div class="share">
-            <img src="../img/accountImgs/changeProfileShare.svg" alt="share">
+            <img v-bind:src="require(`@/img/accountImgs/changeProfileShare.svg`)" alt="share">
         </div>
     </div>
 </template>
 
 <script>
+import ModalHide from '@/js/ModalHide';
+import {mapActions} from 'vuex';
 export default {
-    name: 'ProfileButtons'
+    name: 'ProfileButtons',
+    methods: {
+        ...mapActions([
+            'SHOW_MODAL_GIFT', 
+            'HIDE_MODAL_GIFT'
+        ]),
+        async btnClick() {
+            await this.SHOW_MODAL_GIFT();
+            await ModalHide('.modalGift', this.HIDE_MODAL_GIFT);
+        }
+    }
 }
 </script>
 

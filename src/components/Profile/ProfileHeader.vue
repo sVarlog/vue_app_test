@@ -1,10 +1,10 @@
 <template>
     <div class="header">
         <div class="nameBlock">
-            <div class="name">{{title}} <img src="../img/icons/checkIcon.svg" alt="check"></div>
+            <div class="name">{{title}} <img v-bind:src="require(`@/img/icons/checkIcon.svg`)" alt="check"></div>
             <div v-bind:class="[stat, 'online']">{{status}}</div>
         </div>
-        <span class="acMenu" >
+        <span class="acMenu" @click="btnClick">
             <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="17" height="2" rx="1" fill="#469BFC"/>
                 <rect y="5" width="17" height="2" rx="1" fill="#469BFC"/>
@@ -15,11 +15,23 @@
 </template>
 
 <script>
+import ModalHide from '../../js/ModalHide.js';
+import {mapActions} from 'vuex';
 export default {
     name: 'ProfileHeader',
     data() {
         return {
             stat: 'active'
+        }
+    },
+    methods: {
+        ...mapActions([
+            'SHOW_MODAL_SETTINGS',
+            'HIDE_MODAL_SETTINGS'
+        ]),
+        async btnClick() {
+            await this.SHOW_MODAL_SETTINGS();
+            await ModalHide('.modalSetting', this.HIDE_MODAL_SETTINGS);
         }
     },
     props: ['title', 'status']

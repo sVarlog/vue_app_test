@@ -25,7 +25,80 @@ h1,h2,h3{
 	font-weight: 600;
 }
 p{font-family: 'Gilroy';}
-a{color: inherit;}
+a{color: inherit;text-decoration: none;}
+/* modals */
+.modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    transition: .15s;
+    opacity: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+.modal .modalWrapp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, .65);
+    opacity: 0;
+    z-index: 1;
+}
+.modal.active{
+    opacity: 1;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+.modal.active .modalWrapp {
+    opacity: 1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+.modal .modalContent {
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    transition: .25s;
+    transform: translateY(125%);
+    z-index: 2;
+}
+.modal .contentModal {
+    z-index: 2;
+}
+.modal.active .modalContent{
+    transition: .25s;
+    transition-delay: .5s;
+    transform: translateY(0);
+}
+.modal .modalContent .line {
+    position: absolute;
+    top: -9px;
+    width: 33px;
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+.modal .modalContent h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+.modal .modalContent p {
+    font-weight: 500;
+    font-size: 15px;
+    width: 90%;
+    margin-top: 5px;
+}
 /* fonts */
 @font-face {
     font-family: 'Gilroy';
