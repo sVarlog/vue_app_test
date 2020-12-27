@@ -1,5 +1,4 @@
 <template>
-    <keep-alive>
         <transition name="modal-fade">
             <div v-bind:class="['modal', 'modalSetting', state ? 'active' : 'false']">
                 <div class="modalWrapp"></div>
@@ -59,7 +58,6 @@
                 </div>
             </div>
         </transition>
-    </keep-alive>
 </template>
 
 <script>
