@@ -11,8 +11,6 @@ body{
 	min-height: 100%;
 	overflow-x: hidden;
 	margin: auto;
-    padding-top: 51px;
-    padding-bottom: 51px;
 }
 body.modalActive{
 	height: 100%;

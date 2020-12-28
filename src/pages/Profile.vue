@@ -1,7 +1,7 @@
 <template>
     <div class="Wrapp">
-        <CustomHeader pageType="profile_login" v-bind:title="getProfileHeader.header" v-bind:status="getProfileHeader.status"/>
-        <!-- <div class="pageContent"> -->
+        <div class="pageContent">
+            <CustomHeader pageType="profile_login" v-bind:title="getProfileHeader.header" v-bind:status="getProfileHeader.status"/>
             <div class="page-account__poster">
                 <img ref="poster" v-bind:src="require(`@/img/${getProfileBanner.img}`)" alt="">
             </div>
@@ -13,7 +13,7 @@
                     v-bind:post="post"
                 />
             </ul>
-        <!-- </div> -->
+        </div>
         <BottomMenu active="profile"/>
         <ModalShare v-if="allModals.modalShare.status"/>
         <ModalSettings v-if="allModals.modalSetting.status"/>
@@ -59,6 +59,17 @@
 .Wrapp{
     height: 100%;
     max-height: 100%;
+    padding-top: 51px;
+    padding-bottom: 51px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.pageContent{
+    overflow: auto;
+    overscroll-behavior: contain;
 }
 .page-account__poster {
     height: 197px;

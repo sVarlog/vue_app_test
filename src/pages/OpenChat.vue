@@ -163,6 +163,12 @@ export default {
 </script>
 
 <style scoped>
+.openChat{
+    height: 100%;
+    max-height: 100%;
+    padding-top: 51px;
+    padding-bottom: 51px;
+}
 .background{
     position: fixed;
     z-index: -1;

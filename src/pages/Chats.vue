@@ -52,9 +52,11 @@ export default {
 
 <style scoped>
 .chatsPage{
+    height: 100%;
+    max-height: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 66px;
 }
 .search{
     width: 100%;
