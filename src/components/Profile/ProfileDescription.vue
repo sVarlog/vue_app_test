@@ -95,9 +95,9 @@
 
         <!-- test buttons -->
         <div class="testButtons">
-            <button @click="changeProfile('profile')">Мой профить</button>
-            <button @click="changeProfile('no_subscr')">Не подписашвийкся</button>
-            <button @click="changeProfile('subscr')">Подписавшийся</button>
+            <button style="font-weight: 600; padding: 0 5px;" @click="changeProfile('profile')">Профиль</button>
+            <button style="font-weight: 600; padding: 0 5px;" @click="changeProfile('no_subscr')">Отписавшийся</button>
+            <button style="font-weight: 600; padding: 0 5px;" @click="changeProfile('subscr')">Подписавшийся</button>
         </div>
 
     </div>
