@@ -13,6 +13,25 @@
             </svg>
         </router-link>
     </header>
+
+    <header v-else-if="pageType === 'profile_login'" class="header profile_login">
+        <a v-if="getLoginSubscribe !== 'my_profile'" @click="$router.go(-1)" class="back"><img v-bind:src="require(`@/img/icons/authBlueArrowToLeftIcon.svg`)" alt="">Назад</a>
+        <div class="nameBlock">
+            <div class="name">{{title}} <img v-bind:src="require(`@/img/icons/checkIcon.svg`)" alt="check"></div>
+            <div v-bind:class="['active', 'online']">{{status}}</div>
+        </div>
+        <span v-if="getLoginSubscribe === 'my_profile'" class="acMenu" @click="btnClick('settings')">
+            <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="17" height="2" rx="1" fill="#469BFC"/>
+                <rect y="5" width="17" height="2" rx="1" fill="#469BFC"/>
+                <rect y="10" width="17" height="2" rx="1" fill="#469BFC"/>
+            </svg>
+        </span>
+        <div v-else class="complainMenu" @click="btnClick('complain')">
+            <img v-bind:src="require(`@/img/accountImgs/menuIcon2.svg`)" alt="menu">
+        </div>
+    </header>
+
     <header v-else class="header">
         <a v-if="backType === 'change'" href="#" class="change">Изменить</a>
         <div class="heading">
@@ -22,9 +41,29 @@
 </template>
 
 <script>
+import ModalHide from '@/js/ModalHide';
+import {mapMutations, mapGetters} from 'vuex';
 export default {
     name: 'CustomHeader',
-    props: ['title', 'backType', 'pageType', 'status']
+    props: ['title', 'backType', 'pageType', 'status'],
+    computed: mapGetters(['getLoginSubscribe']),
+    methods: {
+        ...mapMutations([
+            'SHOW_MODAL_SETTINGS',
+            'HIDE_MODAL_SETTINGS',
+            'SHOW_MODAL_COMPLAIN',
+            'HIDE_MODAL_COMPLAIN'
+        ]),
+        async btnClick(type) {
+            if (type === 'settings') {
+                await this.SHOW_MODAL_SETTINGS();
+                await ModalHide('.modalSetting', this.HIDE_MODAL_SETTINGS);
+            } else if (type === 'complain') {
+                await this.SHOW_MODAL_COMPLAIN();
+                await ModalHide('.complainModal', this.HIDE_MODAL_COMPLAIN);
+            }
+        }
+    },
 }
 </script>
 
@@ -105,4 +144,61 @@ export default {
 .header .heading span.online.active{
     color: #468ADE;
 }
+/* profile header */
+.header.profile_login .nameBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header.profile_login .name{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #1D1D1F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header.profile_login .name img{
+    margin-left: 5px;
+}
+.header.profile_login .acMenu,
+.header.profile_login .complainMenu{
+    position: absolute;
+    width: 90px;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+.header.profile_login .acMenu svg{
+    width: 24px;
+    height: auto;
+    position: absolute;
+    right: 12px;
+}
+.header.profile_login .complainMenu img{
+    position: absolute;
+    right: 26px;
+    height: 16px;
+    top: calc(50% - 8px);
+}
+.header.profile_login .online{
+    text-align: center;
+    font-family: 'Gilroy';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    color: #707579;
+}
+.header.profile_login .online.active{
+    color: #468ade;
+}
+/*  */
 </style>

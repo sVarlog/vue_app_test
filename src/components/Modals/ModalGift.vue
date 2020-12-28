@@ -1,53 +1,55 @@
 <template>
-    <transition name="modal-fade">
-        <div v-bind:class="['modal', 'modalGift', status ? 'active' : '' ]">
-            <div class="modalWrapp"></div>
-            <div class="modalContent">
-                <div class="line"></div>
-                <h2>Ваши достижения</h2>
-                <p>Каждый завершенный этап будет награждаться подарками за ваши достижения.</p>
-                <p>Достижения работают только в том случае, если ваша подписка стоит свыше или равна 499₽.</p>
-                <a href="openMenu.html" class="moreDetails">Подробнее »</a>
-                <div class="customSlider">
-                    <div class="sliderWrapp">
-                        <div class="sliderInner">
-                            <div class="item">
-                                <img v-bind:src="require(`@/img/accountImgs/achivItem1.png`)" alt="img1">
-                                <p>Iphone 12 pro max 256gb) ✅</p>
-                            </div>
-                            <div class="item">
-                                <img v-bind:src="require(`@/img/accountImgs/achivItem2.png`)" alt="img2">
-                                <p>Отдых на бали</p>
-                            </div>
-                            <div class="item">
-                                <img v-bind:src="require(`@/img/accountImgs/achivItem3.png`)" alt="img2">
-                                <p>Rolex Datejust</p>
-                            </div>
-                            <div class="item">
-                                <img v-bind:src="require(`@/img/accountImgs/achivItem4.png`)" alt="img2">
-                                <p>Mercedes-Benz C-Класс</p>
+    <keep-alive>
+        <transition name="modal-fade">
+            <div v-bind:class="['modal', 'modalGift', status ? 'active' : '' ]">
+                <div class="modalWrapp"></div>
+                <div class="modalContent">
+                    <div class="line"></div>
+                    <h2>Ваши достижения</h2>
+                    <p>Каждый завершенный этап будет награждаться подарками за ваши достижения.</p>
+                    <p>Достижения работают только в том случае, если ваша подписка стоит свыше или равна 499₽.</p>
+                    <a href="openMenu.html" class="moreDetails">Подробнее »</a>
+                    <div class="customSlider">
+                        <div class="sliderWrapp">
+                            <div class="sliderInner">
+                                <div class="item">
+                                    <img v-bind:src="require(`@/img/accountImgs/achivItem1.png`)" alt="img1">
+                                    <p>Iphone 12 pro max 256gb) ✅</p>
+                                </div>
+                                <div class="item">
+                                    <img v-bind:src="require(`@/img/accountImgs/achivItem2.png`)" alt="img2">
+                                    <p>Отдых на бали</p>
+                                </div>
+                                <div class="item">
+                                    <img v-bind:src="require(`@/img/accountImgs/achivItem3.png`)" alt="img2">
+                                    <p>Rolex Datejust</p>
+                                </div>
+                                <div class="item">
+                                    <img v-bind:src="require(`@/img/accountImgs/achivItem4.png`)" alt="img2">
+                                    <p>Mercedes-Benz C-Класс</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <p class="progressText"><span class="numbers"> </span> друзей <span class="numberText">(Выполнено)</span></p>
-                <div class="progress">
-                    <div class="progressWrapp"></div>
-                    <div class="progressInner"></div>
-                </div>
-                <button class="showForm">Получить</button>
-                <form action="#" class="itemForm">
-                    <div class="textBefore">
-                        <input type="text" name="fio" placeholder="ФИО">
-                        <input type="number" name="phone" placeholder="Телефон для связи">
-                        <input type="text" name="address" placeholder="Адрес доставки">
-                        <button class="sendForm">Отправить</button>
+                    <p class="progressText"><span class="numbers"> </span> друзей <span class="numberText">(Выполнено)</span></p>
+                    <div class="progress">
+                        <div class="progressWrapp"></div>
+                        <div class="progressInner"></div>
                     </div>
-                    <p class="textAfter">Скоро подарок будет <br> доставлен или он уже у вас 😎️</p>
-                </form>
+                    <button class="showForm">Получить</button>
+                    <form action="#" class="itemForm">
+                        <div class="textBefore">
+                            <input type="text" name="fio" placeholder="ФИО">
+                            <input type="number" name="phone" placeholder="Телефон для связи">
+                            <input type="text" name="address" placeholder="Адрес доставки">
+                            <button class="sendForm">Отправить</button>
+                        </div>
+                        <p class="textAfter">Скоро подарок будет <br> доставлен или он уже у вас 😎️</p>
+                    </form>
+                </div>
             </div>
-        </div>
-    </transition>
+        </transition>
+    </keep-alive>
 </template>
 
 <script>

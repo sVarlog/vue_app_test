@@ -8,8 +8,6 @@ const customSlider = (sliderSelector, wrappSelector, sliderInnerSelector, itemSe
         currentSlide = 0,
         pd = padding;
 
-    console.log('test213123213');
-
     inner.setAttribute('data-slide', 0);
 
     const changeDot = (n) => {

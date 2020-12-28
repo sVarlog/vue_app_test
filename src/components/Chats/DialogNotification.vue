@@ -52,12 +52,12 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapMutations} from 'vuex';
 import ModalHide from '@/js/ModalHide';
 export default {
     name: 'DialogNotification',
     methods: {
-        ...mapActions([
+        ...mapMutations([
             'SHOW_MODAL_NOTIFICATION', 
             'HIDE_MODAL_NOTIFICATION',
             'REMOVE_MODAL_NOTIFICATION'

@@ -11,34 +11,18 @@ export default {
         },
         chatsNotification: {
             status: false
+        },
+        modalComplain: {
+            status: false
+        },
+        modalReasonComplain: {
+            status: false
+        },
+        modalUnsubscribe: {
+            status: false
         }
     },
-    actions: {
-        SHOW_MODAL_SETTINGS({commit}) {
-            commit('SHOW_MODAL_SETTINGS');
-        },
-        HIDE_MODAL_SETTINGS({commit}) {
-            commit('HIDE_MODAL_SETTINGS');
-        },
-        SHOW_MODAL_SHARE({ commit }) {
-            commit('SHOW_MODAL_SHARE');
-        },
-        HIDE_MODAL_SHARE({ commit }) {
-            commit('HIDE_MODAL_SHARE');
-        },
-        SHOW_MODAL_GIFT({commit}) {
-            commit('SHOW_MODAL_GIFT');
-        },
-        HIDE_MODAL_GIFT({commit}) {
-            commit('HIDE_MODAL_GIFT');
-        },
-        SHOW_MODAL_NOTIFICATION({ commit }) {
-            commit('SHOW_MODAL_NOTIFICATION');
-        },
-        HIDE_MODAL_NOTIFICATION({ commit }) {
-            commit('HIDE_MODAL_NOTIFICATION');
-        },
-    },
+    actions: {},
     mutations: {
         SHOW_MODAL_SETTINGS: (state) => {
             state.modalSetting.status = true;
@@ -63,7 +47,25 @@ export default {
         },
         HIDE_MODAL_NOTIFICATION: (state) => {
             state.chatsNotification.status = false;
-        }
+        },
+        SHOW_MODAL_COMPLAIN: (state) => {
+            state.modalComplain.status = true;
+        },
+        HIDE_MODAL_COMPLAIN: (state) => {
+            state.modalComplain.status = false;
+        },
+        SHOW_MODAL_REASON_COMPLAIN: (state) => {
+            state.modalReasonComplain.status = true;
+        },
+        HIDE_MODAL_REASON_COMPLAIN: (state) => {
+            state.modalReasonComplain.status = false;
+        },
+        SHOW_MODAL_UNSUBSCRIBE: (state) => {
+            state.modalUnsubscribe.status = true;
+        },
+        HIDE_MODAL_UNSUBSCRIBE: (state) => {
+            state.modalUnsubscribe.status = false;
+        },
     },
     getters: {
         allModals(state) {

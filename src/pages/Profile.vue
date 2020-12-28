@@ -1,9 +1,6 @@
 <template>
     <div class="Wrapp">
-        <ProfileHeader 
-            v-bind:title="getProfileHeader.header"
-            v-bind:status="getProfileHeader.status"
-        />
+        <CustomHeader pageType="profile_login" v-bind:title="getProfileHeader.header" v-bind:status="getProfileHeader.status"/>
         <div class="pageContent">
             <div class="page-account__poster">
                 <img ref="poster" v-bind:src="require(`@/img/${getProfileBanner.img}`)" alt="">
@@ -21,29 +18,38 @@
         <ModalShare v-if="allModals.modalShare.status"/>
         <ModalSettings v-if="allModals.modalSetting.status"/>
         <ModalGift v-if="allModals.modalGift.status"/>
+        <ComplainModal v-if="allModals.modalComplain.status"/>
+        <UnsubscribeModal v-if="allModals.modalUnsubscribe.status"/>
+        <ReasonComplainModal v-if="allModals.modalReasonComplain.status"/>
     </div>
 </template>
 
 <script>
     import {mapGetters} from 'vuex';
-    import ProfileHeader from '@/components/Profile/ProfileHeader';
+    import CustomHeader from '@/components/CustomHeader';
     import ProfileDescription from '@/components/Profile/ProfileDescription';
     import ProfilePost from '@/components/Profile/ProfilePost';
     import BottomMenu from '@/components/BottomMenu';
     import ModalShare from '@/components/Modals/ModalShare';
     import ModalSettings from '@/components/Modals/ModalSettings';
     import ModalGift from '@/components/Modals/ModalGift';
+    import ComplainModal from '@/components/Modals/ComplainModal';
+    import UnsubscribeModal from '@/components/Modals/UnsubscribeModal';
+    import ReasonComplainModal from '@/components/Modals/ReasonComplainModal';
 
     export default {
         name: 'Profile',
         components: {
-            ProfileHeader,
+            CustomHeader,
             ProfileDescription,
             ProfilePost,
             BottomMenu,
             ModalShare,
             ModalSettings,
-            ModalGift
+            ModalGift,
+            ComplainModal,
+            UnsubscribeModal,
+            ReasonComplainModal
         },
         computed: mapGetters(['allPosts', 'getProfileHeader', 'getProfileBanner', 'allModals'])
     }
