@@ -15,6 +15,7 @@ const ModalHide = (modalWrapp, action) => {
             let t = eStart.target;
 
             const hide = (eType, event1) => {
+                console.log('move');
                 if (eType === 'click') {
                     modalContent.style.transform = "translateY(125%)";
                     setTimeout(() => {

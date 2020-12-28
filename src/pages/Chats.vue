@@ -2,20 +2,17 @@
     <div class="chatsPage">
         <CustomHeader title="Чаты" pageType="dialogs" backType="change"/>
 
-       <div class="pageContent">
-            <div class="search">
-                <img v-bind:src="require(`@/img/icons/chatSearchIcon.svg`)" alt="search">
-                <input @input="input" type="text" placeholder="Поиск" v-model="name">
-            </div>
+        <div class="search">
+            <img v-bind:src="require(`@/img/icons/chatSearchIcon.svg`)" alt="search">
+            <input @input="input" type="text" placeholder="Поиск" v-model="name">
+        </div>
 
-            <DialogNotification v-if="!getMessages.notification" />
+        <DialogNotification v-if="!getMessages.notification" />
 
-            <div class="chatContent">
-                <DialogItem v-for="(message) of getMessages.dialogs.with" v-bind:key="message.id" v-bind:message="message"/>
-            </div>
+        <div class="chatContent">
+            <DialogItem v-for="(message) of getMessages.dialogs.with" v-bind:key="message.id" v-bind:message="message"/>
+        </div>
 
-       </div>
-       
         <ChatNotificationModal v-if="allModals.chatsNotification.status"/>
 
         <BottomMenu active="chats"/>
@@ -54,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-.pageContent{
+.chatsPage{
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
