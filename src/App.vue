@@ -7,9 +7,9 @@
 <style>
 *{padding: 0;margin: 0;box-sizing: border-box;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 body{
-	width: 100%;
-	min-height: 100%;
-	overflow-x: hidden;
+	height: 100vh;
+    width: 100vw;
+	overflow: hidden;
 	margin: auto;
 }
 body.modalActive{
