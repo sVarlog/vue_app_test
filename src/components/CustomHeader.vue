@@ -75,7 +75,7 @@ export default {
     justify-content: center;
     align-items: center;
     height: 51px;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;

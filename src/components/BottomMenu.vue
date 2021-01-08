@@ -42,7 +42,7 @@ export default {
 .menuBottom{
     width: 100%;
     height: 51px;
-    position: fixed;
+    position: relative;
     z-index: 4;
     bottom: 0;
     left: 0;

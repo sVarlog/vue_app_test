@@ -40,6 +40,11 @@ export default {
                     {id: 6, name: "Support", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'S'}},
                     {id: 7, name: "@mayer_kira", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'MK'}},
                     {id: 8, name: "Магазин Одежды", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'Sh'}},
+                    {id: 9, name: "Иван Иванов", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'ИИ'}},
+                    {id: 10, name: "Иван Петров", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'ИП'}},
+                    {id: 11, name: "Support", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'S'}},
+                    {id: 12, name: "@mayer_kira", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'MK'}},
+                    {id: 13, name: "Магазин Одежды", status: {online: true, lastSeen: 'online'}, avatar: {img: 'none', bg: 'green', initials: 'Sh'}},
                 ],
                 dialog: [
                     {id: 0}

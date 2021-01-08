@@ -70,6 +70,7 @@
 .pageContent{
     overflow: auto;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 .page-account__poster {
     height: 197px;

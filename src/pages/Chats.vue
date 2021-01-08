@@ -2,18 +2,20 @@
     <div class="chatsPage">
         <CustomHeader title="Чаты" pageType="dialogs" backType="change"/>
 
-        <div class="search">
-            <img v-bind:src="require(`@/img/icons/chatSearchIcon.svg`)" alt="search">
-            <input @input="input" type="text" placeholder="Поиск" v-model="name">
+        <div class="content">
+            <div class="search">
+                <img v-bind:src="require(`@/img/icons/chatSearchIcon.svg`)" alt="search">
+                <input @input="input" type="text" placeholder="Поиск" v-model="name">
+            </div>
+
+            <DialogNotification v-if="!getMessages.notification" />
+
+            <div class="chatContent">
+                <DialogItem v-for="(message) of getMessages.dialogs.with" v-bind:key="message.id" v-bind:message="message"/>
+            </div>
+
+            <ChatNotificationModal v-if="allModals.chatsNotification.status"/>
         </div>
-
-        <DialogNotification v-if="!getMessages.notification" />
-
-        <div class="chatContent">
-            <DialogItem v-for="(message) of getMessages.dialogs.with" v-bind:key="message.id" v-bind:message="message"/>
-        </div>
-
-        <ChatNotificationModal v-if="allModals.chatsNotification.status"/>
 
         <BottomMenu active="chats"/>
     </div>
@@ -52,11 +54,24 @@ export default {
 
 <style scoped>
 .chatsPage{
-    height: 100%;
-    max-height: 100%;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 66px;
+}
+.chatsPage .content{
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 66px;
+    position: relative;
+    height: calc(100vh - 102px);
+    overscroll-behavior: contain;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .search{
     width: 100%;
