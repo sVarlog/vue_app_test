@@ -62,13 +62,14 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    padding-bottom: 66px;
 }
 .chatsPage .content{
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
     height: calc(100vh - 102px);
+    margin-top: 51px;
+    margin-bottom: 51px;
     overscroll-behavior: contain;
     overflow-y: auto;
     overflow-x: hidden;
