@@ -64,12 +64,15 @@ export default {
     right: 0;
 }
 .chatsPage .content{
+    box-sizing: border-box;
     padding-left: 15px;
     padding-right: 15px;
-    position: relative;
-    height: calc(100vh - 102px);
-    margin-top: 51px;
-    margin-bottom: 51px;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    padding-bottom: 5px;
+    top: 51px;
+    bottom: 51px;
     overscroll-behavior: contain;
     overflow-y: auto;
     overflow-x: hidden;
